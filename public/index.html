@@ -1,0 +1,105 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="scotchEmployee">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Node/Angular Employee App</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+    .checkbox: {border-bottom:2px solid black;}
+		#employee-list, #craft-list 				{ margin-bottom:30px; }
+		#employee-form, #craft-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script><!-- load angular 1.2.4 -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/employees.js"></script> <!-- load our employee service -->
+  <script src="js/services/crafts.js"></script> <!-- load our employee service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+	<div class="container">
+
+		<!-- HEADER AND EMPLOYEE COUNT -->
+		<div class="jumbotron text-center">
+			<h1>Employees <span class="label label-info">{{ employees.length }}</span></h1>
+		</div>
+
+		<!-- Employee LIST -->
+		<div id="employee-list" class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+
+				<!-- LOOP OVER THE EMPLOYEES IN $scope.employees -->
+				<div class="checkbox" ng-repeat="employee in employees">
+					<label>
+						<input type="checkbox" ng-click="deleteEmployee(employee._id)"> {{ employee.name }} || {{ employee.title }} || {{ employee.craft }}
+					</label>
+				</div>
+
+			</div>
+		</div>
+
+    <!-- FORM TO CREATE EMPLOYEES -->
+    <div id="craft-form" class="row">
+      <div class="col-sm-4 col-sm-offset-2 text-center">
+        <form class="form-horizontal">
+          <div class="form-group">
+
+            <!-- BIND THIS VALUE TO employeeData.name IN ANGULAR -->
+            <label for="craftName" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control input-sm text-center" id="craftName" placeholder="Enter Craft" ng-model="craftData.name">
+            </div>
+          </div>
+
+          <!-- createEmployee() WILL CREATE NEW EMPLOYEES -->
+          <button type="submit" class="btn btn-primary btn-lg" ng-click="createCraft()">Add</button>
+        </form>
+      </div>
+    </div>
+
+		<!-- FORM TO CREATE EMPLOYEES -->
+		<div id="employee-form" class="row">
+			<div class="col-sm-4 col-sm-offset-2 text-center">
+				<form class="form-horizontal">
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO employeeData.name IN ANGULAR -->
+						<label for="employeeName" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control input-sm text-center" id="employeeName" placeholder="Enter Employee Name" ng-model="employeeData.name">
+            </div>
+
+            <label for="employeeTitle" class="col-sm-2 control-label">Title</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control input-sm text-center" id="employeeTitle" placeholder="Enter Employee Title" ng-model="employeeData.title">
+            </div>
+            <label for="employeeCraft" class="col-sm-2 control-label">Craft</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="employeeCraft" ng-model="employeeData.craft" ng-options="craft.name for craft in crafts">
+              </select>
+            </div>
+					</div>
+
+					<!-- createEmployee() WILL CREATE NEW EMPLOYEES -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createEmployee()">Add</button>
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

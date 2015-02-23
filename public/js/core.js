@@ -1,0 +1,1 @@
+angular.module('scotchEmployee', ['employeeController', 'employeeService', 'craftService']);
