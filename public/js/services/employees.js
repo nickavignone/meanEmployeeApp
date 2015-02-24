@@ -8,7 +8,6 @@ angular.module('employeeService', [])
         return $http.get('/api/employees');
       },
       create: function (employeeData) {
-        console.log(employeeData)
         return $http.post('/api/employees', employeeData);
       },
       delete: function (id) {

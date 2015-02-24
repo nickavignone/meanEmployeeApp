@@ -11,6 +11,7 @@
 
 	<!-- SCROLLS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+  <link rel="stylesheet" href="libs/css/isteven-multi-select.css">
 	<style>
 		html 					{ overflow-y:scroll; }
 		body 					{ padding-top:50px; }
@@ -26,6 +27,7 @@
 	<script src="js/services/employees.js"></script> <!-- load our employee service -->
   <script src="js/services/crafts.js"></script> <!-- load our employee service -->
 	<script src="js/core.js"></script> <!-- load our main application -->
+  <script src="libs/js/isteven-multi-select.js"></script>
 
 </head>
 <!-- SET THE CONTROLLER -->
@@ -50,21 +52,21 @@
 
 			</div>
 		</div>
-
-    <!-- FORM TO CREATE EMPLOYEES -->
+  
+    <!-- FORM TO CREATE Crafts -->
     <div id="craft-form" class="row">
       <div class="col-sm-4 col-sm-offset-2 text-center">
         <form class="form-horizontal">
           <div class="form-group">
 
-            <!-- BIND THIS VALUE TO employeeData.name IN ANGULAR -->
+            <!-- BIND THIS VALUE TO craftData.craft IN ANGULAR -->
             <label for="craftName" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
               <input type="text" class="form-control input-sm text-center" id="craftName" placeholder="Enter Craft" ng-model="craftData.name">
             </div>
           </div>
 
-          <!-- createEmployee() WILL CREATE NEW EMPLOYEES -->
+          <!-- createCraft() WILL CREATE NEW CRAFTS -->
           <button type="submit" class="btn btn-primary btn-lg" ng-click="createCraft()">Add</button>
         </form>
       </div>

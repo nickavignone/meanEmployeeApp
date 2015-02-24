@@ -1,1 +1,1 @@
-angular.module('scotchEmployee', ['employeeController', 'employeeService', 'craftService']);
+angular.module('scotchEmployee', ['employeeController', 'employeeService', 'craftService', 'isteven-multi-select']);
